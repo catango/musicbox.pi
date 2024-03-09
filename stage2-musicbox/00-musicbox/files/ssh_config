@@ -1,0 +1,11 @@
+Host jump
+    HostName    ${MUSIC_SERVER_PUBLIC}
+    Port        ${MUSIC_SERVER_PORT}
+    User        ${MUSIC_SERVER_JUSER} 
+    LocalForward 6660 ${MUSIC_SERVER_LOCAL}:6660
+
+Host musicpd
+    HostName    ${MUSIC_SERVER_LOCAL}
+    User        ${MUSIC_SERVER_USER}
+    ProxyJump   jump
+

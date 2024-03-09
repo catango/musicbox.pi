@@ -1,0 +1,12 @@
+overlayroot
+netcat-openbsd
+autossh
+sshfs
+pulseaudio
+mpd
+ncmpcpp
+
+pulseaudio-module-bluetooth
+bluez-tools
+
+shairport-sync
