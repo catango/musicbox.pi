@@ -1,0 +1,12 @@
+[Unit]
+Description=First boot
+Before=getty@tty1.service
+After=pulseaudio.service
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/firstboot.sh
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target

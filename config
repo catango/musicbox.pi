@@ -1,7 +1,7 @@
-IMG_NAME="rpi-music"
+IMG_NAME="musicbox.pi"
 RELEASE="bookworm"
 LOCALE_DEFAULT="en_US.UTF-8"
-TARGET_HOSTNAME="rpi-music"
+TARGET_HOSTNAME="musicbox.pi"
 KEYBOARD_KEYMAP="de"
 TIMEZONE_DEFAULT="Europe/Berlin"
 FIRST_USER_NAME="pi"
@@ -15,8 +15,8 @@ STAGE_LIST="stage0 stage1 stage2 stage2-musicbox"
 # APT_PROXY=http://10.10.10.50:3142
 
 
-export MUSIC_SERVER_PUBLIC="example.com"
-export MUSIC_SERVER_LOCAL="mpd.local" #tb changed
-export MUSIC_SERVER_JUSER="juser"
-export MUSIC_SERVER_USER="mpd"
-export MUSIC_SERVER_PORT=2244
+#export MUSIC_SERVER_PUBLIC="example.com"
+#export MUSIC_SERVER_LOCAL="mpd.local" #tb changed
+#export MUSIC_SERVER_JUSER="juser"
+#export MUSIC_SERVER_USER="mpd"
+#export MUSIC_SERVER_PORT=2244
