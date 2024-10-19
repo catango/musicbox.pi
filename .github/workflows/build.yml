@@ -1,0 +1,29 @@
+name: Build musicbox.pi
+run-name: build and upload musicbox.pi raspberrypi image
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: usimd/pi-gen-action@v1
+        id: build
+        with:
+          image-name: musicbox.pi
+          pi-gen-release: bookworm
+          locale: en_US.UTF-8
+          hostname: musicbox.pi
+          keyboard-keymap: de
+          timezone: Europe/Berlin
+          username: pi
+          password: 'musicbox.pi'
+          disable-first-boot-user-rename: 1
+          enable-ssh: 1
+          wpa-country: DE
+          stage-list: stage0 stage1 stage2 ./stage2-musicbox
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: musicbox.pi-image
+          path: ${{ steps.build.outputs.image-path }}
