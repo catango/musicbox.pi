@@ -3,8 +3,8 @@ Description=Pulseaudio sound server
 After=avahi-daemon.service network.target
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/pulseaudio --realtime --no-cpu-limit --system --disallow-exit --daemon
+User=pulse
+ExecStart=/usr/bin/pulseaudio --disallow-exit --daemonize
 ExecReload=/bin/pkill pulseaudio
 RestartSec=5
 Restart=always

@@ -42,7 +42,8 @@ echo "user_allow_other" >> "${ROOTFS_DIR}/etc/fuse.conf"
 
 # configure pulseaudio
 install -m 644 -o 0 -g 0 files/pulseaudio.service "${ROOTFS_DIR}/etc/systemd/system/"
-echo "autospawn = no" >> "${ROOTFS_DIR}/etc/pulse/client.conf"
+install -m 644 -o 0 -g 0 files/client.conf "${ROOTFS_DIR}/etc/pulse/client.conf"
+install -m 644 -o 0 -g 0 files/socket.pa "${ROOTFS_DIR}/etc/pulse/default.pa.d/socket.pa"
 echo "system-instance = yes
 resample-method = speex-float-9
 default-sample-format = float32le
@@ -66,9 +67,6 @@ install -m 644 -o 0 -g 0 files/main.conf "${ROOTFS_DIR}/etc/bluetooth/"
 install -m 644 -o 0 -g 0 files/bt-agent@.service "${ROOTFS_DIR}/etc/systemd/system/"
 install -m 755 -o 0 -g 0 files/bluetooth-udev "${ROOTFS_DIR}/usr/local/bin/"
 install -m 644 -o 0 -g 0 files/99-bluetooth-udev.rules "${ROOTFS_DIR}/etc/udev/rules.d/"
-
-echo "load-module module-bluetooth-policy" >> "${ROOTFS_DIR}/etc/pulse/system.pa"
-echo "load-module module-bluetooth-discover" >> "${ROOTFS_DIR}/etc/pulse/system.pa"
 
 # shairport-sync
 install -m 644 -o 0 -g 0 files/shairport-sync.conf "${ROOTFS_DIR}/etc/"
