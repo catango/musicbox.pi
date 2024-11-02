@@ -2,11 +2,11 @@
 
 # pulseaudio
 usermod -aG pulse-access pi
-systemctl --global disable pulseaudio.service pulseaudio.socket
+systemctl --global disable pulseaudio.service
 systemctl enable pulseaudio.service
 
 # mpd
-usermod -aG pi,pulse-access mpd
+usermod -aG pulse-access mpd
 #systemctl enable mpd-tunnel
 #systemctl enable mpd
 
