@@ -50,7 +50,7 @@ resample-method = soxr-vhq" >> "${ROOTFS_DIR}/etc/pulse/daemon.conf"
 
 # install mpd config
 install -m 755 -o 0 -g 0 -d "${ROOTFS_DIR}/etc/systemd/system/mpd.service.d/"
-install -m 644 -o 0 -g 0 files/mpd_override "${ROOTFS_DIR}/etc/systemd/system/mpd.service.d/override"
+install -m 644 -o 0 -g 0 files/mpd_override "${ROOTFS_DIR}/etc/systemd/system/mpd.service.d/override.conf"
 cat files/mpd.conf > "${ROOTFS_DIR}/etc/mpd.conf"
 
 # install librespot
