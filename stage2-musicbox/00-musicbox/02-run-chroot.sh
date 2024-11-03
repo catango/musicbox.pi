@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+# install additional deb files
+dpkg -i /tmp/*.deb
+rm /tmp/*.deb
+
 # pulseaudio
 usermod -aG pulse-access pi
 systemctl --global disable pulseaudio.service
@@ -14,6 +18,7 @@ usermod -aG pulse-access mpd
 #systemctl enable librespot
 
 #scream
+usermod -aG pulse-access scream
 #systemctl enable scream
 
 # bluetooth
