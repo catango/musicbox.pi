@@ -11,7 +11,8 @@ jobs:
         id: build
         with:
           image-name: musicbox.pi
-          pi-gen-release: bookworm
+          pi-gen-release: Raspberry Pi reference
+          pi-gen-version: 2024-07-04-raspios-bookworm
           locale: en_US.UTF-8
           hostname: musicbox.pi
           keyboard-keymap: de
