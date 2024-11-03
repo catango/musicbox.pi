@@ -1,4 +1,4 @@
-# set value (1/0) to enable/disable music.pi services
+# set value (1/0) to enable/disable musicbox.pi services
 
 mpd_enable=1
 librespot_enable=1

@@ -16,8 +16,6 @@ HOME="${ROOTFS_DIR}/home/${FIRST_USER_NAME}"
 # modify login screen
 echo "My IP address: \4" >> "${ROOTFS_DIR}/etc/issue"
 
-#TMP_FILE=$(mktemp)
-
 # imstall config
 install -m 644 files/musicbox.txt "${ROOTFS_DIR}/boot/firmware/"
 
@@ -72,6 +70,3 @@ echo "load-module module-bluetooth-discover" >> "${ROOTFS_DIR}/etc/pulse/system.
 
 # shairport-sync
 install -m 644 -o 0 -g 0 files/shairport-sync.conf "${ROOTFS_DIR}/etc/"
-
-#rm "${TMP_FILE}"
-

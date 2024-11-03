@@ -4,7 +4,7 @@ After=avahi-daemon.service network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/pulseaudio --realtime --no-cpu-limit --system --disallow-exit --daemon
+ExecStart=/usr/bin/pulseaudio --realtime --no-cpu-limit --system --disallow-exit --daemonize
 ExecReload=/bin/pkill pulseaudio
 RestartSec=5
 Restart=always
