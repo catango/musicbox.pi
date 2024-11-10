@@ -91,8 +91,23 @@ Host musicpd
 EOF
 }
 
-# change default password of pi user
-passwd pi
+change_initial_passwd() {
+    res=1
+    cnt=0
+    while [ ${cnt} -le 4 ] && [ ${res} -ne 0 ]
+    do
+        passwd
+        res=$?
+        cnt=$(( ${cnt} + 1 ))
+        if [ ${cnt} -eq 4 ]; then
+            echo "Password change failed. Exiting initial setup..."
+            exit 1
+        fi
+    done
+}
+
+# change default password of default user
+change_initial_passwd
 
 # exit if mpd is disabled in config
 if [ "${mpd_enable}" != 1 ]; then
