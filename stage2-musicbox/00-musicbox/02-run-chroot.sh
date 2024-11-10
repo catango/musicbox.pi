@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # install additional deb files
-dpkg -i /tmp/*.deb
+sudo apt-get -y install -f /tmp/*.deb
 rm /tmp/*.deb
 
 # pulseaudio
