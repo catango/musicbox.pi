@@ -1,8 +1,9 @@
-#/bin/bash
+#!/bin/bash
 
 echo ">> FIRST RUN"
 
 MUSICBOX_CONFIG="/boot/firmware/musicbox.txt"
+# shellcheck disable=SC1090
 . "${MUSICBOX_CONFIG}"
 
 SSH_CONFIG="${HOME}/.ssh/config"
@@ -16,18 +17,18 @@ connection_fail() {
 }
 
 create_config_bastion() {
-    read -p "Please define hostname of bastion host [${music_server_hostname_bastion}]: " input
-    if [ ! -z ${input} ]; then
+    read -p -r "Please define hostname of bastion host [${music_server_hostname_bastion}]: " input
+    if [ -n "${input}" ]; then
         music_server_hostname_bastion=${input};
     fi
-    read -p "Please define bastion host login [${music_server_user_bastion}]: " input
-    if [ ! -z ${input} ]; then
+    read -p -r "Please define bastion host login [${music_server_user_bastion}]: " input
+    if [ -n "${input}" ]; then
         music_server_user_bastion=${input}
     fi
 
     while true; do
-        read -p "Please define bastion host port [${music_server_port_bastion}]: " input
-        if [ -z ${input} ]; then
+        read -p -r "Please define bastion host port [${music_server_port_bastion}]: " input
+        if [ -z "${input}" ]; then
             echo "Please enter a valid port number or continue with default port ${music_server_port_bastion}: "
             break
         elif [[ ${input} =~ ^[0-9]+$ ]]; then
@@ -39,18 +40,18 @@ create_config_bastion() {
 }
 
 create_config_local() {
-    read -p "Please define hostname of mpd host [${music_server_hostname_local}]: " input
-    if [ ! -z ${input} ]; then
+    read -p -r "Please define hostname of mpd host [${music_server_hostname_local}]: " input
+    if [ -n "${input}" ]; then
         music_server_hostname_local=${input};
     fi
-    read -p "Please define mpd host login [${music_server_user_local}]: " input
-    if [ ! -z ${input} ]; then
+    read -p -r "Please define mpd host login [${music_server_user_local}]: " input
+    if [ -n "${input}" ]; then
         music_server_user_local=${input}
     fi
 
     while true; do
-        read -p "Please define mpd host port [${music_server_port_local}]: " input
-        if [ -z ${input} ]; then
+        read -p -r "Please define mpd host port [${music_server_port_local}]: " input
+        if [ -z "${input}" ]; then
             echo "Please enter a valid port number or continue with default port ${music_server_port_local}: "
             break
         elif [[ ${input} =~ ^[0-9]+$ ]]; then
@@ -98,7 +99,7 @@ change_initial_passwd() {
     do
         passwd
         res=$?
-        cnt=$(( ${cnt} + 1 ))
+        cnt=$(( cnt + 1 ))
         if [ ${cnt} -eq 4 ]; then
             echo "Password change failed. Exiting initial setup..."
             exit 1
@@ -110,6 +111,7 @@ change_initial_passwd() {
 change_initial_passwd
 
 # exit if mpd is disabled in config
+# shellcheck disable=SC2154
 if [ "${mpd_enable}" != 1 ]; then
     touch "${FIRSTLOGIN_FLAG}"
     exit
@@ -121,18 +123,18 @@ ssh-keygen -f ~/.ssh/id_rsa -q -N ''
 
 while true; do
 
-read -p "Is the mpd server reachable via a bastion host (y/N) " yn
+read -p -r "Is the mpd server reachable via a bastion host (y/N) " yn
 
 case $yn in
 	[yY] ) create_config_bastion
         write_ssh_config_bastion
-        nc -z ${music_server_hostname_bastion} ${music_server_port_bastion} 2>/dev/null || connection_fail
+        nc -z "${music_server_hostname_bastion}" "${music_server_port_bastion}" 2>/dev/null || connection_fail
         ssh-copy-id jump || connection_fail
         ssh-copy-id musicpd || connection_fail
         break;;
     [nN]|'' ) create_config_local
         write_ssh_config_local
-        nc -z ${music_server_hostname_local} ${music_server_port_local} 2>/dev/null || connection_fail
+        nc -z "${music_server_hostname_local}" "${music_server_port_local}" 2>/dev/null || connection_fail
         ssh-copy-id musicpd || connection_fail
 		break;;
 	* ) echo invalid response;;

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit 1
@@ -9,6 +8,7 @@ fi
 OVERLAY_ENABLED=$(df -h | grep overlay)
 
 MUSICBOX_CONFIG='/boot/firmware/musicbox.txt'
+# shellcheck disable=SC1090
 . "${MUSICBOX_CONFIG}"
 
 if [ -n "${OVERLAY_ENABLED}" ]; then

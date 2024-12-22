@@ -14,6 +14,7 @@ HOME="${ROOTFS_DIR}/home/${FIRST_USER_NAME}"
 #install -m 755 -o 1000 -g 1000 files/kiosk.sh "${HOME}/"
 
 # modify login screen
+# shellcheck disable=SC2028
 echo "My IP address: \4" >> "${ROOTFS_DIR}/etc/issue"
 
 # imstall config
@@ -56,7 +57,7 @@ install -m 644 -o 0 -g 0 files/librespot.service "${ROOTFS_DIR}/etc/systemd/syst
 install -m 755 -o 0 -g 0 files/bin/librespot "${ROOTFS_DIR}/usr/local/bin/"
 
 # install scream audio receiver
-install -m 755 -o 0 -g 0 files/deb/scream_4.0-1_${ARCH}.deb "${ROOTFS_DIR}/tmp/"
+install -m 755 -o 0 -g 0 "files/deb/scream_4.0-1_${ARCH}.deb" "${ROOTFS_DIR}/tmp/"
 install -m 755 -o 0 -g 0 -d "${ROOTFS_DIR}/etc/systemd/system/scream.service.d/"
 install -m 644 -o 0 -g 0 files/scream_override "${ROOTFS_DIR}/etc/systemd/system/scream.service.d/override.conf"
 
