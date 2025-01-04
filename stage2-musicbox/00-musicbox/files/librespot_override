@@ -1,0 +1,11 @@
+[Unit]
+After=network-online.target pulseaudio.service
+Wants=network-online.target pulseaudio.service
+
+[Service]
+DynamicUser=no
+SupplementaryGroups=
+User=nobody
+Group=pulse-access
+ExecStart=
+ExecStart=/usr/bin/librespot --name "%p@%H" --backend pulseaudio -b 320 --disable-audio-cache --enable-volume-normalisation --initial-volume 100 --device-type speaker
