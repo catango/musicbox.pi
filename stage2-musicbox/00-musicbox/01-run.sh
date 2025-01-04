@@ -68,4 +68,6 @@ echo "load-module module-bluetooth-policy" >> "${ROOTFS_DIR}/etc/pulse/system.pa
 echo "load-module module-bluetooth-discover" >> "${ROOTFS_DIR}/etc/pulse/system.pa"
 
 # shairport-sync
+install -m 755 -o 0 -g 0 -d "${ROOTFS_DIR}/etc/systemd/system/shairport-sync.service.d/"
+install -m 644 -o 0 -g 0 files/shairport-sync_override "${ROOTFS_DIR}/etc/systemd/system/shairport-sync.service.d/override.conf"
 install -m 644 -o 0 -g 0 files/shairport-sync.conf "${ROOTFS_DIR}/etc/"
