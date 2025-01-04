@@ -17,17 +17,17 @@ connection_fail() {
 }
 
 create_config_bastion() {
-    read -p -r "Please define hostname of bastion host [${music_server_hostname_bastion}]: " input
+    read -r -p "Please define hostname of bastion host [${music_server_hostname_bastion}]: " input
     if [ -n "${input}" ]; then
         music_server_hostname_bastion=${input};
     fi
-    read -p -r "Please define bastion host login [${music_server_user_bastion}]: " input
+    read -r -p "Please define bastion host login [${music_server_user_bastion}]: " input
     if [ -n "${input}" ]; then
         music_server_user_bastion=${input}
     fi
 
     while true; do
-        read -p -r "Please define bastion host port [${music_server_port_bastion}]: " input
+        read -r -p "Please define bastion host port [${music_server_port_bastion}]: " input
         if [ -z "${input}" ]; then
             echo "Please enter a valid port number or continue with default port ${music_server_port_bastion}: "
             break
@@ -40,17 +40,17 @@ create_config_bastion() {
 }
 
 create_config_local() {
-    read -p -r "Please define hostname of mpd host [${music_server_hostname_local}]: " input
+    read -r -p "Please define hostname of mpd host [${music_server_hostname_local}]: " input
     if [ -n "${input}" ]; then
         music_server_hostname_local=${input};
     fi
-    read -p -r "Please define mpd host login [${music_server_user_local}]: " input
+    read -r -p "Please define mpd host login [${music_server_user_local}]: " input
     if [ -n "${input}" ]; then
         music_server_user_local=${input}
     fi
 
     while true; do
-        read -p -r "Please define mpd host port [${music_server_port_local}]: " input
+        read -r -p "Please define mpd host port [${music_server_port_local}]: " input
         if [ -z "${input}" ]; then
             echo "Please enter a valid port number or continue with default port ${music_server_port_local}: "
             break
@@ -123,7 +123,7 @@ ssh-keygen -f ~/.ssh/id_rsa -q -N ''
 
 while true; do
 
-read -p -r "Is the mpd server reachable via a bastion host (y/N) " yn
+read -r -p "Is the mpd server reachable via a bastion host (y/N) " yn
 
 case $yn in
 	[yY] ) create_config_bastion

@@ -13,10 +13,6 @@ HOME="${ROOTFS_DIR}/home/${FIRST_USER_NAME}"
 #HOME="${ROOTFS_DIR}/home/${FIRST_USER_NAME}"
 #install -m 755 -o 1000 -g 1000 files/kiosk.sh "${HOME}/"
 
-# modify login screen
-# shellcheck disable=SC2028
-echo "My IP address: \4" >> "${ROOTFS_DIR}/etc/issue"
-
 # imstall config
 install -m 644 files/musicbox.txt "${ROOTFS_DIR}/boot/firmware/"
 
