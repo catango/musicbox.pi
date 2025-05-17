@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## clone pi-gen raspberry pi build system
-git clone --depth 1 --branch 2024-07-04-raspios-bookworm https://github.com/RPI-Distro/pi-gen.git
+git clone --depth 1 --branch 2025-05-06-raspios-bookworm-armhf https://github.com/RPI-Distro/pi-gen.git
 
 ## disable export for stage2
 touch ./pi-gen/stage2/SKIP_IMAGES ./pi-gen/stage2/SKIP_NOOBS
