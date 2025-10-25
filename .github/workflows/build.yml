@@ -20,7 +20,8 @@ jobs:
         with:
           image-name: musicbox.pi
           pi-gen-release: Raspberry Pi reference
-          pi-gen-version: 2024-11-19-raspios-bookworm-armhf
+          pi-gen-version: 2025-10-01-raspios-bookworm-armhf
+          release: bookworm
           locale: en_US.UTF-8
           hostname: musicbox.pi
           keyboard-keymap: de
