@@ -49,7 +49,7 @@ install -m 644 -o 0 -g 0 files/mpd_override "${ROOTFS_DIR}/etc/systemd/system/mp
 cat files/mpd.conf > "${ROOTFS_DIR}/etc/mpd.conf"
 
 # install librespot
-install -m 755 -o 0 -g 0 "files/deb/librespot_0.6.0-1_${ARCH}.deb" "${ROOTFS_DIR}/tmp/"
+install -m 755 -o 0 -g 0 "files/deb/librespot_0.7.1-1_${ARCH}.deb" "${ROOTFS_DIR}/tmp/"
 install -m 755 -o 0 -g 0 -d "${ROOTFS_DIR}/etc/systemd/system/librespot.service.d/"
 install -m 644 -o 0 -g 0 files/librespot_override "${ROOTFS_DIR}/etc/systemd/system/librespot.service.d/override.conf"
 
