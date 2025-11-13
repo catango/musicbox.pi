@@ -13,7 +13,7 @@ HOME="${ROOTFS_DIR}/home/${FIRST_USER_NAME}"
 #HOME="${ROOTFS_DIR}/home/${FIRST_USER_NAME}"
 #install -m 755 -o 1000 -g 1000 files/kiosk.sh "${HOME}/"
 
-# imstall config
+# install config
 install -m 644 files/musicbox.txt "${ROOTFS_DIR}/boot/firmware/"
 
 # install script for ssh key generation & setup
@@ -49,7 +49,7 @@ install -m 644 -o 0 -g 0 files/mpd_override "${ROOTFS_DIR}/etc/systemd/system/mp
 cat files/mpd.conf > "${ROOTFS_DIR}/etc/mpd.conf"
 
 # install librespot
-install -m 755 -o 0 -g 0 "files/deb/librespot_0.7.1-1_${ARCH}.deb" "${ROOTFS_DIR}/tmp/"
+install -m 755 -o 0 -g 0 "files/deb/librespot_0.8.0-1_${ARCH}.deb" "${ROOTFS_DIR}/tmp/"
 install -m 755 -o 0 -g 0 -d "${ROOTFS_DIR}/etc/systemd/system/librespot.service.d/"
 install -m 644 -o 0 -g 0 files/librespot_override "${ROOTFS_DIR}/etc/systemd/system/librespot.service.d/override.conf"
 
