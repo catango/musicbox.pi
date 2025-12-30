@@ -19,7 +19,9 @@ if [ -n "${OVERLAY_ENABLED}" ]; then
     sleep 5
     reboot
 else
+    # if mpd config is disabled, reboot is triggered by firstboot and firstlogin.sh is omitted
     /usr/local/bin/firstboot.sh
-    sudo -u pi usr/local/bin/firstlogin.sh
-
+    sudo systemctl stop mpd-tunnel
+    sudo systemctl stop mpd
+    sudo -u pi /usr/local/bin/firstlogin.sh
 fi
