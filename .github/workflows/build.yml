@@ -26,13 +26,9 @@ jobs:
           hostname: musicbox.pi
           keyboard-keymap: de
           timezone: Europe/Berlin
-          username: pi
-          password: 'musicbox.pi'
-          disable-first-boot-user-rename: 1
           enable-ssh: 1
           wpa-country: DE
           stage-list: stage0 stage1 stage2 ./stage2-musicbox
-          verbose-output: true
 
       - uses: actions/upload-artifact@v6
         with:
