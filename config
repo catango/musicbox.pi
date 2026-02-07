@@ -1,5 +1,5 @@
 IMG_NAME="musicbox.pi"
-RELEASE="bookworm"
+RELEASE="trixie"
 LOCALE_DEFAULT="en_US.UTF-8"
 TARGET_HOSTNAME="musicbox.pi"
 KEYBOARD_KEYMAP="de"
