@@ -29,6 +29,7 @@ jobs:
           enable-ssh: 1
           wpa-country: DE
           stage-list: stage0 stage1 stage2 ./stage2-musicbox
+          verbose-output: true
 
       - uses: actions/upload-artifact@v6
         with:
