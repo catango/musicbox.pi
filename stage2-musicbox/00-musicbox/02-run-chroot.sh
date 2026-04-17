@@ -4,6 +4,10 @@
 sudo apt-get -y install -f /tmp/*.deb
 rm /tmp/*.deb
 
+# remove dev packages, installed by default in raspberry pi os
+sudo apt-get -y remove build-essential manpages-dev gdb pkg-config
+sudo apt-get -y autoremove -o APT::Autoremove::RecommendsImportant=0 -o APT::Autoremove::SuggestsImportant=0
+
 # pulseaudio
 usermod -aG pulse-access pi
 systemctl --global disable pulseaudio.service
