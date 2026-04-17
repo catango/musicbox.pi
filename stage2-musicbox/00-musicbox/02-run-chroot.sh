@@ -4,6 +4,8 @@
 sudo apt-get -y install -f /tmp/*.deb
 rm /tmp/*.deb
 
+###
+
 # pulseaudio
 usermod -aG pulse-access pi
 systemctl --global disable pulseaudio.service
