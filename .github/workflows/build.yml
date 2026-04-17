@@ -20,7 +20,7 @@ jobs:
         with:
           image-name: musicbox.pi
           pi-gen-release: Raspberry Pi reference
-          pi-gen-version: 2025-12-04-raspios-trixie-arm64
+          pi-gen-version: 2026-04-13-raspios-trixie-arm64
           release: trixie
           locale: en_US.UTF-8
           hostname: musicbox.pi
