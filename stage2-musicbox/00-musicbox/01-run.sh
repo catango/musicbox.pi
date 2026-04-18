@@ -4,6 +4,8 @@ HOME="${ROOTFS_DIR}/home/${FIRST_USER_NAME}"
 
 # install config
 install -m 644 files/musicbox.txt "${ROOTFS_DIR}/boot/firmware/"
+install -m 644 files/wifi_config.txt "${ROOTFS_DIR}/boot/firmware/"
+
 
 # install script for ssh key generation & setup
 install -m 755 -o 0 -g 0 files/firstboot.sh "${ROOTFS_DIR}/usr/local/bin/"
@@ -11,6 +13,10 @@ install -m 644 -o 0 -g 0 files/firstboot.service "${ROOTFS_DIR}/etc/systemd/syst
 install -m 755 -o 0 -g 0 files/firstlogin.sh "${ROOTFS_DIR}/usr/local/bin/"
 install -m 755 -o 0 -g 0 files/musicbox-reconfigure.sh "${ROOTFS_DIR}/usr/local/bin/"
 install -m 644 -o 1000 -g 1000 files/.bashrc "${HOME}/"
+
+# configure wifi setup
+install -m 644 -o 0 -g 0 files/wifi-setup.service "${ROOTFS_DIR}/etc/systemd/system/"
+install -m 755 -o 0 -g 0 files/wifi-setup.sh "${ROOTFS_DIR}/usr/local/bin/"
 
 # configure mpd tunnel
 install -m 644 -o 0 -g 0 files/mpd-tunnel.service "${ROOTFS_DIR}/etc/systemd/system/"

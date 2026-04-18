@@ -8,6 +8,9 @@ rm /tmp/*.deb
 sudo apt-get -y remove build-essential manpages-dev gdb pkg-config
 sudo apt-get -y autoremove -o APT::Autoremove::RecommendsImportant=0 -o APT::Autoremove::SuggestsImportant=0
 
+# wifi-setup
+systemctl enable wifi-setup.service
+
 # pulseaudio
 usermod -aG pulse-access pi
 systemctl --global disable pulseaudio.service
